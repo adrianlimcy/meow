@@ -1,0 +1,72 @@
+<%!-- <.header>
+  Listing Meerkats
+  <:actions>
+    <.link patch={~p"/meerkats/new"}>
+      <.button>New Meerkat</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="meerkats"
+  rows={@streams.meerkats}
+  row_click={fn {_id, meerkat} -> JS.navigate(~p"/meerkats/#{meerkat}") end}
+>
+  <:col :let={{_id, meerkat}} label="Name"><%= meerkat.name %></:col>
+  <:action :let={{_id, meerkat}}>
+    <div class="sr-only">
+      <.link navigate={~p"/meerkats/#{meerkat}"}>Show</.link>
+    </div>
+    <.link patch={~p"/meerkats/#{meerkat}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, meerkat}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: meerkat.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="meerkat-modal" show on_cancel={JS.patch(~p"/meerkats")}>
+  <.live_component
+    module={MeowWeb.MeerkatLive.FormComponent}
+    id={@meerkat.id || :new}
+    title={@page_title}
+    action={@live_action}
+    meerkat={@meerkat}
+    patch={~p"/meerkats"}
+  />
+</.modal> --%>
+
+<table>
+<thead>
+<tr>
+<th>
+<.live_component
+module={MeowWeb.MeerkatLive.SortingComponent}
+id={"sorting-id"}
+key={:id}
+sorting={@sorting}
+/>
+</th>
+<th>
+<.live_component
+module={MeowWeb.MeerkatLive.SortingComponent}
+id={"sorting-name"}
+key={:name}
+sorting={@sorting}
+/>
+</th>
+</tr>
+</thead>
+<tbody>
+<%= for meerket <- @meerkats do %>
+<tr>
+<td><%= meerket.id %></td>
+<td><%= meerket.name %></td>
+</tr>
+<% end %>
+</tbody>
+</table>

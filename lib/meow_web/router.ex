@@ -18,6 +18,12 @@ defmodule MeowWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/meerkats", MeerkatLive.Index, :index
+    live "/meerkats/new", MeerkatLive.Index, :new
+    live "/meerkats/:id/edit", MeerkatLive.Index, :edit
+
+    live "/meerkats/:id", MeerkatLive.Show, :show
+    live "/meerkats/:id/show/edit", MeerkatLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

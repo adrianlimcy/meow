@@ -1,18 +1,12 @@
 # Meow
 
-To start your Phoenix server:
+This code base follows the examples from the book "Building tables views with Phoenix Liveview but with the later version of Pheonix 1.7.2"
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Steps:
+1. mix phx.new meow
+2. cd meow
+3. mix ecto.create
+4. mix phx.gen.live Meerkats Meerkat meerkats name:string
+5. copy paste routes
+6. mix ecto.migrate
+7. follow tutorial in book
