@@ -39,34 +39,41 @@
     patch={~p"/meerkats"}
   />
 </.modal> --%>
+<div>
+  <.live_component
+  module={MeowWeb.MeerkatLive.FilterComponent}
+  id="filer"
+  filter={@filter} />
 
-<table>
-<thead>
-<tr>
-<th>
-<.live_component
-module={MeowWeb.MeerkatLive.SortingComponent}
-id={"sorting-id"}
-key={:id}
-sorting={@sorting}
-/>
-</th>
-<th>
-<.live_component
-module={MeowWeb.MeerkatLive.SortingComponent}
-id={"sorting-name"}
-key={:name}
-sorting={@sorting}
-/>
-</th>
-</tr>
-</thead>
-<tbody>
-<%= for meerket <- @meerkats do %>
-<tr>
-<td><%= meerket.id %></td>
-<td><%= meerket.name %></td>
-</tr>
-<% end %>
-</tbody>
-</table>
+  <table>
+    <thead>
+      <tr>
+        <th>
+        <.live_component
+        module={MeowWeb.MeerkatLive.SortingComponent}
+        id={"sorting-id"}
+        key={:id}
+        sorting={@sorting}
+        />
+        </th>
+        <th>
+        <.live_component
+        module={MeowWeb.MeerkatLive.SortingComponent}
+        id={"sorting-name"}
+        key={:name}
+        sorting={@sorting}
+        />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for meerket <- @meerkats do %>
+        <tr>
+          <td><%= meerket.id %></td>
+          <td><%= meerket.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
